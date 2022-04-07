@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{037D0DAF-62F1-42BC-8D44-FDA0BE049CA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alexa.Net.Lambda", "src\Alexa.Net.Lambda\Alexa.Net.Lambda.csproj", "{51D1B390-B994-45E6-A9AA-7E511170516E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B40D230A-CEA5-4281-A280-C37BEB174BF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alexa.Net.Lambda.Tests", "test\Alexa.Net.Lambda.Tests\Alexa.Net.Lambda.Tests.csproj", "{823F1609-D0EA-44F8-9570-4866BE0C8898}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51D1B390-B994-45E6-A9AA-7E511170516E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D1B390-B994-45E6-A9AA-7E511170516E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D1B390-B994-45E6-A9AA-7E511170516E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D1B390-B994-45E6-A9AA-7E511170516E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823F1609-D0EA-44F8-9570-4866BE0C8898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823F1609-D0EA-44F8-9570-4866BE0C8898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823F1609-D0EA-44F8-9570-4866BE0C8898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823F1609-D0EA-44F8-9570-4866BE0C8898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51D1B390-B994-45E6-A9AA-7E511170516E} = {037D0DAF-62F1-42BC-8D44-FDA0BE049CA7}
+		{823F1609-D0EA-44F8-9570-4866BE0C8898} = {B40D230A-CEA5-4281-A280-C37BEB174BF0}
+	EndGlobalSection
+EndGlobal
