@@ -4,6 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>Nick Cipollina</Authors>
+    <Description>Simple package to enable Alexa Skill development in .Net with Dependency Injection</Description>
+    <PackageProjectUrl>https://github.com/ncipollina/alexa-net-lambda</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ncipollina/alexa-net-lambda</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>amazon;alexa;echo;dot;echo dot;skills;lambda</PackageTags>
+    <PackageReleaseNotes>Initial version of Lambda Function with Dependency Injection.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
