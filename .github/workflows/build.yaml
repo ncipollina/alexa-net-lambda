@@ -1,0 +1,75 @@
+name: .Net Build and Package
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.all-contributorsrc'
+  workflow_dispatch:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.all-contributorsrc'
+
+jobs:
+  build:
+    name: Build and Package
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.8.0
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+        nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+        nuget-version: latest
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    # Run the tests, ideally should stop here if a fail and also publish results as artifacts
+    - name: Test
+      run: dotnet test --no-restore
+
+    - name: Pack
+      run: dotnet pack --configuration Release -o finalpackage --no-build
+
+    - name: Get version
+      id: set_proj_version
+      shell: pwsh
+      run: |
+        [xml]$nuspec = Get-Content src\Alexa.Net.Lambda\Alexa.Net.Lambda.csproj
+        $version=$nuspec.project.propertygroup.versionprefix
+        $relnotes=$nuspec.project.propertygroup.packagereleasenotes
+        Write-Output "::set-output name=PKG_VERSION::$version"
+        Write-Output "::set-output name=RELNOTES::$relnotes"
+
+    - name: Publish to Nuget
+      run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Push to GitHub Packages
+      run: dotnet nuget push **/*.nupkg -s "GPR" --skip-duplicate
+
+    - name: Tag and Release
+      id: tag_release
+      uses: softprops/action-gh-release@v0.1.13
+      with:
+        body: ${{ steps.set_proj_version.outputs.RELNOTES }}
+        tag_name: ${{ steps.set_proj_version.outputs.PKG_VERSION }}
+        files: |
+          **/*.nupkg
