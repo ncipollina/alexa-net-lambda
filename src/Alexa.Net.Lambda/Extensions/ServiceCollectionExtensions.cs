@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
     {
         if (services is null)
             throw new ArgumentNullException(nameof(services));
+        services.TryAddSingleton<ISkillContextFactory, DefaultSkillContextFactory>();
         services.TryAddSingleton<ISkillContextAccessor, SkillContextAccessor>();
         return services;
     }

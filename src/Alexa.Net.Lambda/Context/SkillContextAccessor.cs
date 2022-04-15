@@ -2,17 +2,17 @@
 
 public class SkillContextAccessor : ISkillContextAccessor
 {
-    private static readonly AsyncLocal<SkillContextHolder> _skillContextCurrent = new AsyncLocal<SkillContextHolder>();
+    private static readonly AsyncLocal<SkillContextHolder> SkillContextCurrent = new();
 
     public SkillContext? SkillContext
     {
         get
         {
-            return _skillContextCurrent.Value?.Context;
+            return SkillContextCurrent.Value?.Context;
         }
         set
         {
-            var holder = _skillContextCurrent.Value;
+            var holder = SkillContextCurrent.Value;
             if (holder is not null)
             {
                 holder.Context = null;
@@ -20,7 +20,7 @@ public class SkillContextAccessor : ISkillContextAccessor
 
             if (value is not null)
             {
-                _skillContextCurrent.Value = new SkillContextHolder { Context = value };
+                SkillContextCurrent.Value = new SkillContextHolder { Context = value };
             }
         }
     }

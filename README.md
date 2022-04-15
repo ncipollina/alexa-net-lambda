@@ -1,5 +1,10 @@
 # Alexa Skills Base Lambda Function
 
+## Package Version
+| Build Status                                                                                                                                                                                    | Nuget |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----- |
+| [![.Net Build and Package](https://github.com/ncipollina/alexa-net-lambda/actions/workflows/build.yaml/badge.svg)](https://github.com/ncipollina/alexa-net-lambda/actions/workflows/build.yaml) | [![NuGet Badge](https://buildstats.info/nuget/alexa.net.lambda)](https://www.nuget.org/packages/Alexa.Net.Lambda/) |
+
 Simple package to enable Alexa Skill development in .Net with Dependency Injection.
 
 # Setup

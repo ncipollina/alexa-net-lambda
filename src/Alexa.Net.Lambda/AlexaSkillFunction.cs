@@ -38,7 +38,6 @@ public abstract class AlexaSkillFunction
         builder.ConfigureServices(services =>
         {
             services.AddSkillContextAccessor();
-            services.AddSingleton<ISkillContextFactory, DefaultSkillContextFactory>();
         });
         var host = builder.Build();
         
