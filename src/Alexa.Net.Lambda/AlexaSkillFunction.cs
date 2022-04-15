@@ -1,4 +1,6 @@
 ﻿using Alexa.Net.Lambda.Abstractions;
+using Alexa.Net.Lambda.Context;
+using Alexa.Net.Lambda.Extensions;
 using Alexa.NET.Request;
 using Alexa.NET.Response;
 using Amazon.Lambda.Core;
@@ -8,11 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Alexa.Net.Lambda;
 
-public abstract class AlexaSkillFunction : AlexaSkillFunction<SkillRequest, SkillResponse>
-{
-}
-
-public abstract class AlexaSkillFunction<TRequest, TResponse>
+public abstract class AlexaSkillFunction
 {
     private IServiceProvider _serviceProvider;
 
@@ -37,20 +35,30 @@ public abstract class AlexaSkillFunction<TRequest, TResponse>
     protected void Start()
     {
         var builder = CreateHostBuilder();
-
+        builder.ConfigureServices(services =>
+        {
+            services.AddSkillContextAccessor();
+        });
         var host = builder.Build();
         
         host.Start();
         _serviceProvider = host.Services;
     }
+
+    protected void CreateContext(SkillRequest request)
+    {
+        var factory = _serviceProvider.GetRequiredService<ISkillContextFactory>();
+        factory.Create(request);
+    }
     
     // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
     [LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
-    public virtual async Task<TResponse> FunctionHandlerAsync(TRequest request, ILambdaContext lambdaContext)
+    public virtual async Task<SkillResponse> FunctionHandlerAsync(SkillRequest request, ILambdaContext lambdaContext)
     {
         using var serviceScope = _serviceProvider.CreateScope();
         var provider = serviceScope.ServiceProvider;
-        var handlerAsync = provider.GetRequiredService<HandlerDelegate<TRequest, TResponse>>();
+        CreateContext(request);
+        var handlerAsync = provider.GetRequiredService<HandlerDelegate<SkillRequest, SkillResponse>>();
 
         return await handlerAsync(request, lambdaContext);
     }
