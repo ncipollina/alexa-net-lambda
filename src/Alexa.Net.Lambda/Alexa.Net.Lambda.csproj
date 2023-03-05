@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <VersionPrefix>1.0.1</VersionPrefix>
+    <VersionPrefix>1.0.2</VersionPrefix>
     <Authors>Nick Cipollina</Authors>
     <Description>Simple package to enable Alexa Skill development in .Net with Dependency Injection</Description>
     <PackageProjectUrl>https://github.com/ncipollina/alexa-net-lambda</PackageProjectUrl>
@@ -12,12 +12,13 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>amazon;alexa;echo;dot;echo dot;skills;lambda</PackageTags>
     <PackageReleaseNotes>Added ISkillContextAccessor to make request information available in Dependency Injection container.</PackageReleaseNotes>
+    <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alexa.NET" Version="1.20.0" />
-    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="Alexa.NET" Version="1.21.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>
 
 </Project>
