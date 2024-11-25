@@ -13,12 +13,13 @@
     <PackageTags>amazon;alexa;echo;dot;echo dot;skills;lambda</PackageTags>
     <PackageReleaseNotes>Added ISkillContextAccessor to make request information available in Dependency Injection container.</PackageReleaseNotes>
     <LangVersion>10</LangVersion>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Alexa.NET" Version="1.21.0" />
-    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Alexa.NET" Version="1.22.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
   </ItemGroup>
 
 </Project>
