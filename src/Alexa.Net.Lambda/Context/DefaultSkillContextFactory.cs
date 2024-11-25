@@ -1,5 +1,4 @@
 ﻿using Alexa.NET.Request;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Alexa.Net.Lambda.Context;
 

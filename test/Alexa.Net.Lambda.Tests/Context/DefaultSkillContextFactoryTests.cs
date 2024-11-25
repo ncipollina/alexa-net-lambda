@@ -1,5 +1,4 @@
-﻿using System;
-using Alexa.Net.Lambda.Context;
+﻿using Alexa.Net.Lambda.Context;
 using Alexa.NET.Request;
 using FluentAssertions;
 using Moq;
