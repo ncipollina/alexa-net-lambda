@@ -13,6 +13,8 @@ namespace Alexa.Net.Lambda;
 public abstract class AlexaSkillFunction
 {
     private IServiceProvider _serviceProvider;
+    
+    public IServiceProvider ServiceProvider => _serviceProvider;
 
     protected AlexaSkillFunction()
     {
