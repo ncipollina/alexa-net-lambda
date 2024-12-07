@@ -13,7 +13,7 @@
     <PackageTags>amazon;alexa;echo;dot;echo dot;skills;lambda</PackageTags>
     <PackageReleaseNotes>Added ISkillContextAccessor to make request information available in Dependency Injection container.</PackageReleaseNotes>
     <LangVersion>10</LangVersion>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
